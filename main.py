@@ -21,16 +21,16 @@ def on_life_zero():
     game.game_over(True)
 info.on_life_zero(on_life_zero)
 
-projectileBestFriend: Sprite = None
 mySprite2: Sprite = None
+projectileBestFriend: Sprite = None
 babyDinosSaved = 0
-itIsRaining = False
-chiefsSuperBowlChamps = False
-scienceTeacher = "Mikaela"
-funTeacher = "Ari"
-playerScore = 5
-playerAge = 15
-itIsSonic = True
+itIsSonic = False
+# itIsRaining = True
+# chiefsSuperBowlChamps = False
+# scienceTeacher = "Mikaela"
+# funTeacher = "Ari"
+# playerScore = 5
+# playerAge = 15
 scene.set_background_image(img("""
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
         9999999999999999999999999999999999999999999999999999111111111119999999999999999999999999999999999999991111999999999999999999999999999999999999999999111111111111
@@ -269,6 +269,89 @@ for index in range(4):
     pause(500)
 
 def on_forever():
+    global projectileBestFriend
+    projectileBestFriend = sprites.create_projectile_from_side(img("""
+            . . . . . f f f f f . . . 
+                    . . . f f f f f f f f f . 
+                    . . f f f c f f f f f f . 
+                    . . f f c f f f c f f f f 
+                    f f c c f f f c c f f c f 
+                    f f f f f e f f f f c c f 
+                    . f f f e e f f f f f f f 
+                    . . f f e e f b f e e f f 
+                    . . . f 4 4 f 1 e 4 e f . 
+                    . . . f 4 4 4 4 e f f f . 
+                    . . . f f e e e e e f . . 
+                    . . . f 7 7 7 e 4 4 e . . 
+                    . . . f 7 7 7 e 4 4 e . . 
+                    . . . f 6 6 6 f e e f . . 
+                    . . . . f f f f f f . . . 
+                    . . . . . . f f f . . . .
+        """),
+        -60,
+        0)
+    projectileBestFriend.y = randint(15, 115)
+    animation.run_image_animation(projectileBestFriend,
+        [img("""
+                . . . . . f f f f f . . . 
+                        . . . f f f f f f f f f . 
+                        . . f f f c f f f f f f . 
+                        . . f f c f f f c f f f f 
+                        f f c c f f f c c f f c f 
+                        f f f f f e f f f f c c f 
+                        . f f f e e f f f f f f f 
+                        . . f f e e f b f e e f f 
+                        . . . f 4 4 f 1 e 4 e f . 
+                        . . . f 4 4 4 4 e f f f . 
+                        . . . f f e e e e e f . . 
+                        . . . f 7 7 7 e 4 4 e . . 
+                        . . . f 7 7 7 e 4 4 e . . 
+                        . . . f 6 6 6 f e e f . . 
+                        . . . . f f f f f f . . . 
+                        . . . . . . f f f . . . .
+            """),
+            img("""
+                . . . . . . . . . . . . . 
+                        . . . . f f f f f f . . . 
+                        . . . f f f f f f f f f . 
+                        . . f f f c f f f f f f . 
+                        . f f f c f f f c f f f f 
+                        f f c c f f f c c f f c f 
+                        f f f f f e f f f f c c f 
+                        . f f f e e f f f f f f f 
+                        . . f f e e f b f e e f f 
+                        . . f f 4 4 f 1 e 4 e f . 
+                        . . . f 4 4 4 e e f f f . 
+                        . . . f f e e 4 4 e f . . 
+                        . . . f 7 7 e 4 4 e f . . 
+                        . . f f 6 6 f e e f f f . 
+                        . . f f f f f f f f f f . 
+                        . . . f f f . . . f f . .
+            """),
+            img("""
+                . . . . . . . . . . . . . 
+                        . . . . f f f f f f . . . 
+                        . . . f f f f f f f f f . 
+                        . . f f f c f f f f f f . 
+                        . f f f c f f f c f f f f 
+                        f f c c f f f c c f f c f 
+                        f f f f f e f f f f c c f 
+                        . f f f e e f f f f f f f 
+                        . f f f e e f b f e e f f 
+                        . . f f 4 4 f 1 e 4 e f f 
+                        . . . f 4 4 4 4 e f f f . 
+                        . . . f f e e e e 4 4 4 . 
+                        . . . f 7 7 7 7 e 4 4 e . 
+                        . . f f 6 6 6 6 f e e f . 
+                        . . f f f f f f f f f f . 
+                        . . . f f f . . . f f . .
+            """)],
+        150,
+        True)
+    pause(1000)
+forever(on_forever)
+
+def on_forever2():
     global mySprite2
     mySprite2 = sprites.create_projectile_from_side(img("""
             ........................
@@ -356,87 +439,4 @@ def on_forever():
         5000,
         True)
     pause(2000)
-forever(on_forever)
-
-def on_forever2():
-    global projectileBestFriend
-    projectileBestFriend = sprites.create_projectile_from_side(img("""
-            . . . . . f f f f f . . . 
-                    . . . f f f f f f f f f . 
-                    . . f f f c f f f f f f . 
-                    . . f f c f f f c f f f f 
-                    f f c c f f f c c f f c f 
-                    f f f f f e f f f f c c f 
-                    . f f f e e f f f f f f f 
-                    . . f f e e f b f e e f f 
-                    . . . f 4 4 f 1 e 4 e f . 
-                    . . . f 4 4 4 4 e f f f . 
-                    . . . f f e e e e e f . . 
-                    . . . f 7 7 7 e 4 4 e . . 
-                    . . . f 7 7 7 e 4 4 e . . 
-                    . . . f 6 6 6 f e e f . . 
-                    . . . . f f f f f f . . . 
-                    . . . . . . f f f . . . .
-        """),
-        -60,
-        0)
-    projectileBestFriend.y = randint(15, 115)
-    animation.run_image_animation(projectileBestFriend,
-        [img("""
-                . . . . . f f f f f . . . 
-                        . . . f f f f f f f f f . 
-                        . . f f f c f f f f f f . 
-                        . . f f c f f f c f f f f 
-                        f f c c f f f c c f f c f 
-                        f f f f f e f f f f c c f 
-                        . f f f e e f f f f f f f 
-                        . . f f e e f b f e e f f 
-                        . . . f 4 4 f 1 e 4 e f . 
-                        . . . f 4 4 4 4 e f f f . 
-                        . . . f f e e e e e f . . 
-                        . . . f 7 7 7 e 4 4 e . . 
-                        . . . f 7 7 7 e 4 4 e . . 
-                        . . . f 6 6 6 f e e f . . 
-                        . . . . f f f f f f . . . 
-                        . . . . . . f f f . . . .
-            """),
-            img("""
-                . . . . . . . . . . . . . 
-                        . . . . f f f f f f . . . 
-                        . . . f f f f f f f f f . 
-                        . . f f f c f f f f f f . 
-                        . f f f c f f f c f f f f 
-                        f f c c f f f c c f f c f 
-                        f f f f f e f f f f c c f 
-                        . f f f e e f f f f f f f 
-                        . . f f e e f b f e e f f 
-                        . . f f 4 4 f 1 e 4 e f . 
-                        . . . f 4 4 4 e e f f f . 
-                        . . . f f e e 4 4 e f . . 
-                        . . . f 7 7 e 4 4 e f . . 
-                        . . f f 6 6 f e e f f f . 
-                        . . f f f f f f f f f f . 
-                        . . . f f f . . . f f . .
-            """),
-            img("""
-                . . . . . . . . . . . . . 
-                        . . . . f f f f f f . . . 
-                        . . . f f f f f f f f f . 
-                        . . f f f c f f f f f f . 
-                        . f f f c f f f c f f f f 
-                        f f c c f f f c c f f c f 
-                        f f f f f e f f f f c c f 
-                        . f f f e e f f f f f f f 
-                        . f f f e e f b f e e f f 
-                        . . f f 4 4 f 1 e 4 e f f 
-                        . . . f 4 4 4 4 e f f f . 
-                        . . . f f e e e e 4 4 4 . 
-                        . . . f 7 7 7 7 e 4 4 e . 
-                        . . f f 6 6 6 6 f e e f . 
-                        . . f f f f f f f f f f . 
-                        . . . f f f . . . f f . .
-            """)],
-        150,
-        True)
-    pause(1000)
 forever(on_forever2)

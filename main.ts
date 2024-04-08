@@ -16,16 +16,16 @@ info.onLifeZero(function () {
     game.splash("Dang.. killed by Ghost")
     game.gameOver(true)
 })
-let projectileBestFriend: Sprite = null
 let mySprite2: Sprite = null
+let projectileBestFriend: Sprite = null
 let babyDinosSaved = 0
-let chiefsSuperBowlChamps = false
-let itIsRaining = false
-let scienceTeacher = "Mikaela"
-let funTeacher = "Ari"
-let playerScore = 5
-let playerAge = 15
-let itIsSonic = true
+let itIsSonic = false
+// itIsRaining = True
+// chiefsSuperBowlChamps = False
+// scienceTeacher = "Mikaela"
+// funTeacher = "Ari"
+// playerScore = 5
+// playerAge = 15
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999111111111119999999999999999999999999999999999999991111999999999999999999999999999999999999999999111111111111
@@ -263,6 +263,85 @@ for (let index = 0; index < 4; index++) {
     pause(500)
 }
 forever(function () {
+    projectileBestFriend = sprites.createProjectileFromSide(img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f 4 4 f 1 e 4 e f . 
+        . . . f 4 4 4 4 e f f f . 
+        . . . f f e e e e e f . . 
+        . . . f 7 7 7 e 4 4 e . . 
+        . . . f 7 7 7 e 4 4 e . . 
+        . . . f 6 6 6 f e e f . . 
+        . . . . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `, -60, 0)
+    projectileBestFriend.y = randint(15, 115)
+    animation.runImageAnimation(
+    projectileBestFriend,
+    [img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f 4 4 f 1 e 4 e f . 
+        . . . f 4 4 4 4 e f f f . 
+        . . . f f e e e e e f . . 
+        . . . f 7 7 7 e 4 4 e . . 
+        . . . f 7 7 7 e 4 4 e . . 
+        . . . f 6 6 6 f e e f . . 
+        . . . . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . . f f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . f f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . f f 4 4 f 1 e 4 e f . 
+        . . . f 4 4 4 e e f f f . 
+        . . . f f e e 4 4 e f . . 
+        . . . f 7 7 e 4 4 e f . . 
+        . . f f 6 6 f e e f f f . 
+        . . f f f f f f f f f f . 
+        . . . f f f . . . f f . . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . . f f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . f f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . f f f e e f b f e e f f 
+        . . f f 4 4 f 1 e 4 e f f 
+        . . . f 4 4 4 4 e f f f . 
+        . . . f f e e e e 4 4 4 . 
+        . . . f 7 7 7 7 e 4 4 e . 
+        . . f f 6 6 6 6 f e e f . 
+        . . f f f f f f f f f f . 
+        . . . f f f . . . f f . . 
+        `],
+    150,
+    true
+    )
+    pause(1000)
+})
+forever(function () {
     mySprite2 = sprites.createProjectileFromSide(img`
         ........................
         ........................
@@ -348,83 +427,4 @@ forever(function () {
     true
     )
     pause(2000)
-})
-forever(function () {
-    projectileBestFriend = sprites.createProjectileFromSide(img`
-        . . . . . f f f f f . . . 
-        . . . f f f f f f f f f . 
-        . . f f f c f f f f f f . 
-        . . f f c f f f c f f f f 
-        f f c c f f f c c f f c f 
-        f f f f f e f f f f c c f 
-        . f f f e e f f f f f f f 
-        . . f f e e f b f e e f f 
-        . . . f 4 4 f 1 e 4 e f . 
-        . . . f 4 4 4 4 e f f f . 
-        . . . f f e e e e e f . . 
-        . . . f 7 7 7 e 4 4 e . . 
-        . . . f 7 7 7 e 4 4 e . . 
-        . . . f 6 6 6 f e e f . . 
-        . . . . f f f f f f . . . 
-        . . . . . . f f f . . . . 
-        `, -60, 0)
-    projectileBestFriend.y = randint(15, 115)
-    animation.runImageAnimation(
-    projectileBestFriend,
-    [img`
-        . . . . . f f f f f . . . 
-        . . . f f f f f f f f f . 
-        . . f f f c f f f f f f . 
-        . . f f c f f f c f f f f 
-        f f c c f f f c c f f c f 
-        f f f f f e f f f f c c f 
-        . f f f e e f f f f f f f 
-        . . f f e e f b f e e f f 
-        . . . f 4 4 f 1 e 4 e f . 
-        . . . f 4 4 4 4 e f f f . 
-        . . . f f e e e e e f . . 
-        . . . f 7 7 7 e 4 4 e . . 
-        . . . f 7 7 7 e 4 4 e . . 
-        . . . f 6 6 6 f e e f . . 
-        . . . . f f f f f f . . . 
-        . . . . . . f f f . . . . 
-        `,img`
-        . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . 
-        . . . f f f f f f f f f . 
-        . . f f f c f f f f f f . 
-        . f f f c f f f c f f f f 
-        f f c c f f f c c f f c f 
-        f f f f f e f f f f c c f 
-        . f f f e e f f f f f f f 
-        . . f f e e f b f e e f f 
-        . . f f 4 4 f 1 e 4 e f . 
-        . . . f 4 4 4 e e f f f . 
-        . . . f f e e 4 4 e f . . 
-        . . . f 7 7 e 4 4 e f . . 
-        . . f f 6 6 f e e f f f . 
-        . . f f f f f f f f f f . 
-        . . . f f f . . . f f . . 
-        `,img`
-        . . . . . . . . . . . . . 
-        . . . . f f f f f f . . . 
-        . . . f f f f f f f f f . 
-        . . f f f c f f f f f f . 
-        . f f f c f f f c f f f f 
-        f f c c f f f c c f f c f 
-        f f f f f e f f f f c c f 
-        . f f f e e f f f f f f f 
-        . f f f e e f b f e e f f 
-        . . f f 4 4 f 1 e 4 e f f 
-        . . . f 4 4 4 4 e f f f . 
-        . . . f f e e e e 4 4 4 . 
-        . . . f 7 7 7 7 e 4 4 e . 
-        . . f f 6 6 6 6 f e e f . 
-        . . f f f f f f f f f f . 
-        . . . f f f . . . f f . . 
-        `],
-    150,
-    true
-    )
-    pause(1000)
 })
